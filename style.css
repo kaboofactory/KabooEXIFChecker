@@ -1,0 +1,221 @@
+:root {
+    --bg-color: #121212;
+    --surface-color: #1e1e1e;
+    --primary-color: #bb86fc;
+    --primary-variant: #3700b3;
+    --secondary-color: #03dac6;
+    --text-color: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #333;
+    --error-color: #cf6679;
+    --success-color: #03dac6;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: var(--surface-color);
+    padding: 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 800px; /* Increased width for tables */
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+header h1 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.drop-zone {
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.02);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.drop-zone:hover {
+    border-color: var(--text-secondary);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.drop-zone.dragover {
+    border-color: var(--primary-color);
+    background-color: rgba(187, 134, 252, 0.15);
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(187, 134, 252, 0.2);
+}
+
+.drop-zone p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--primary-color);
+    color: #000;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.button:hover {
+    background-color: #a370f7; /* Slightly lighter than primary */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0,0,0,0.3);
+}
+
+.button:active {
+    transform: translateY(0);
+}
+
+.hidden {
+    display: none;
+}
+
+#results-area {
+    margin-top: 2rem;
+    text-align: left;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#file-info {
+    margin-bottom: 2rem;
+    background-color: rgba(0,0,0,0.2);
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+#file-name {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Metadata List Styling */
+#metadata-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.metadata-item {
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #181818;
+}
+
+.metadata-summary {
+    padding: 1rem;
+    background-color: #252525;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s;
+}
+
+.metadata-summary:hover {
+    background-color: #303030;
+}
+
+.metadata-summary::after {
+    content: '+';
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+}
+
+details[open] .metadata-summary::after {
+    content: '-';
+}
+
+.metadata-content {
+    padding: 1rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    overflow-x: auto;
+}
+
+/* Table Styling for Key-Value pairs */
+.metadata-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5rem;
+}
+
+.metadata-table th, .metadata-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid #333;
+}
+
+.metadata-table th {
+    color: var(--text-color);
+    width: 40%;
+    font-weight: 600;
+}
+
+.metadata-table td {
+    color: var(--text-secondary);
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+.metadata-table tr:last-child th, .metadata-table tr:last-child td {
+    border-bottom: none;
+}
+
+.simple-text {
+    white-space: pre-wrap;
+    font-family: 'Consolas', 'Monaco', monospace;
+}
+
+#actions {
+    text-align: center;
+    margin-top: 2rem;
+}
