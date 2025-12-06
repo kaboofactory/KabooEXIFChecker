@@ -219,3 +219,15 @@ details[open] .metadata-summary::after {
     text-align: center;
     margin-top: 2rem;
 }
+
+footer {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+footer p {
+    margin: 0.5rem 0;
+}
